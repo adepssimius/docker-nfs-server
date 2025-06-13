@@ -67,15 +67,15 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           images: ${{ env.IMAGES }}
           tags: |
-            type=raw,value=latest,enable=${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/main'  }}
+            type=raw,value=latest,enable=${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/build'  }}
             type=ref,event=branch
             type=ref,event=pr
-            type=raw,value=${{ steps.semver_parser.outputs.major }},enable=${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/main'  }}
-            type=raw,value=${{ steps.semver_parser.outputs.major }}.${{ steps.semver_parser.outputs.minor }},enable=${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/main'  }}
-            type=raw,value=${{ steps.semver_parser.outputs.major }}.${{ steps.semver_parser.outputs.minor }}.${{ steps.semver_parser.outputs.patch }},enable=${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/main'  }}
-            type=raw,value=v${{ steps.semver_parser.outputs.major }},enable=${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/main'  }}
-            type=raw,value=v${{ steps.semver_parser.outputs.major }}.${{ steps.semver_parser.outputs.minor }},enable=${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/main'  }}
-            type=raw,value=v${{ steps.semver_parser.outputs.major }}.${{ steps.semver_parser.outputs.minor }}.${{ steps.semver_parser.outputs.patch }},enable=${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/main'  }}
+            type=raw,value=${{ steps.semver_parser.outputs.major }},enable=${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/build'  }}
+            type=raw,value=${{ steps.semver_parser.outputs.major }}.${{ steps.semver_parser.outputs.minor }},enable=${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/build'  }}
+            type=raw,value=${{ steps.semver_parser.outputs.major }}.${{ steps.semver_parser.outputs.minor }}.${{ steps.semver_parser.outputs.patch }},enable=${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/build'  }}
+            type=raw,value=v${{ steps.semver_parser.outputs.major }},enable=${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/build'  }}
+            type=raw,value=v${{ steps.semver_parser.outputs.major }}.${{ steps.semver_parser.outputs.minor }},enable=${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/build'  }}
+            type=raw,value=v${{ steps.semver_parser.outputs.major }}.${{ steps.semver_parser.outputs.minor }}.${{ steps.semver_parser.outputs.patch }},enable=${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/build'  }}
 
       - name: Build image
         id: build
